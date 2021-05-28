@@ -1,0 +1,23 @@
+@import "/styles/variables";
+
+.logo_wrapper {
+  text-align: center;
+
+  .logo {
+    font-family: "Core Sans G Rounded", sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-left: 9px;
+
+    .kino {
+      position: relative;
+      color: #fff;
+      left: 8px;
+    }
+
+    .mo {
+      margin-right: 9px;
+      color: $main-color;
+    }
+  }
+}

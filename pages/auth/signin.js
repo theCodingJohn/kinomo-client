@@ -8,6 +8,9 @@ import schema from "../../utils/yupSchema";
 
 import styles from "../../styles/signin.module.scss";
 
+import AuthLogo from "../../components/AuthLogo";
+import AuthInput from "../../components/AuthInput";
+
 const login = () => {
   const [loginError, setLoginError] = useState(null);
 
@@ -37,12 +40,7 @@ const login = () => {
     <main className={styles.main}>
       <div className={styles.form_container}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.logo_wrapper}>
-            <h1 className={styles.logo}>
-              <span className={styles.kino}>Kino</span>
-              <span className={styles.mo}>Mo</span>
-            </h1>
-          </div>
+          <AuthLogo />
           <div style={{ display: isError() }} className={styles.errors_wrapper}>
             <ul>
               {errors?.username && <li>{errors.username?.message}</li>}
@@ -51,24 +49,20 @@ const login = () => {
             </ul>
           </div>
           <div className={styles.inputs_container}>
-            <div className={styles.input_wrapper}>
-              <span className={`${styles.icon} ${styles.icon_username}`}></span>
-              <input
-                className={styles.input}
-                {...register("username")}
-                placeholder="Username"
-                type="text"
-              />
-            </div>
-            <div className={styles.input_wrapper}>
-              <span className={`${styles.icon} ${styles.icon_password}`}></span>
-              <input
-                className={styles.input}
-                {...register("password")}
-                placeholder="Password"
-                type="password"
-              />
-            </div>
+            <AuthInput
+              register={register}
+              placeholder="Username"
+              registerName="username"
+              icon="icon_username"
+              inputType="text"
+            />
+            <AuthInput
+              register={register}
+              placeholder="Password"
+              registerName="password"
+              icon="icon_password"
+              inputType="password"
+            />
           </div>
 
           <div className={styles.submit_wrapper}>
