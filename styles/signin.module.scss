@@ -1,3 +1,6 @@
+@import "/styles/mixins";
+@import "/styles/variables";
+
 .main {
   position: relative;
   min-height: 100vh;
@@ -11,50 +14,130 @@
   left: 0;
   right: 0;
   width: 90%;
-  background-color: #fff;
+  background-color: rgba($color: #19171f, $alpha: 0.85);
+  color: #fff;
   margin: 0 auto;
   border-radius: 3px;
   box-shadow: 0 0 20px #666;
+
+  @include mediumScreen() {
+    width: 360px;
+  }
 }
 
 .form {
   padding: 15px 15px 25px;
 }
 
-.inputs_container {
-  margin: 20px 0;
-}
+.logo_wrapper {
+  text-align: center;
 
-.input_wrapper {
-  display: flex;
-  height: 44px;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
+  .logo {
+    font-family: "Core Sans G Rounded", sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-left: 9px;
 
-.icon {
-  align-self: center;
-  width: 21px;
-  height: 21px;
-  margin-right: 10px;
-  background-size: contain;
+    .kino {
+      position: relative;
+      color: #fff;
+      left: 8px;
+    }
 
-  &_username {
-    background: url(../public/icons/person.svg) no-repeat center;
-  }
-
-  &_password {
-    background: url(../public/icons/lock.svg) no-repeat center;
+    .mo {
+      margin-right: 9px;
+      color: $main-color;
+    }
   }
 }
 
-.input {
-  font-size: 16px;
+.errors_wrapper {
+  color: rgb(5, 194, 201);
   width: 100%;
-  height: 100%;
-  border: none;
+  padding: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-top: 25px;
 
-  &:focus {
-    outline: none;
+  li {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+}
+
+.inputs_container {
+  margin: 30px 0 20px;
+
+  .input_wrapper {
+    display: flex;
+    height: 44px;
+    border: 1px solid rgb(128, 128, 128);
+    padding: 10px;
+
+    .input {
+      font-size: 16px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      color: #fff;
+      caret-color: $main-color;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $main-color;
+      }
+    }
+
+    .icon {
+      align-self: center;
+      width: 21px;
+      height: 21px;
+      margin-right: 10px;
+      background-size: contain;
+
+      &_username {
+        background: url(../public/icons/person.svg) no-repeat center;
+      }
+
+      &_password {
+        background: url(../public/icons/lock.svg) no-repeat center;
+      }
+    }
+  }
+}
+
+.submit_wrapper {
+  width: 100%;
+  height: 44px;
+
+  .submit_button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: $main-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}
+
+.footer {
+  padding: 20px;
+  height: 61px;
+  font-size: 16px;
+  text-align: center;
+
+  a {
+    cursor: pointer;
+    color: $main-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
