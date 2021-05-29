@@ -1,0 +1,24 @@
+@import "/styles/variables";
+
+.submit_wrapper {
+  width: 100%;
+  height: 44px;
+
+  .submit_button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: $main-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: 200ms ease;
+
+    &:hover {
+      border-radius: 3px;
+      box-shadow: 1px 1px 41px -25px rgba(0, 0, 0, 0.62) inset;
+      transition: 200ms ease;
+    }
+  }
+}

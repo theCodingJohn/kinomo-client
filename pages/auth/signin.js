@@ -11,6 +11,7 @@ import styles from "../../styles/signin.module.scss";
 import AuthFormContainer from "../../components/AuthFormContainer";
 import AuthLogo from "../../components/AuthLogo";
 import AuthInput from "../../components/AuthInput";
+import AuthSubmitButton from "../../components/AuthSubmitButton";
 
 const login = () => {
   const [loginError, setLoginError] = useState(null);
@@ -20,7 +21,7 @@ const login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema.signinSchema),
   });
 
   const onSubmit = async (data, e) => {
@@ -66,13 +67,7 @@ const login = () => {
             />
           </div>
 
-          <div className={styles.submit_wrapper}>
-            <input
-              className={styles.submit_button}
-              type="submit"
-              value="Sign In"
-            />
-          </div>
+          <AuthSubmitButton value="Sign In" />
         </form>
 
         <div className={styles.footer}>
