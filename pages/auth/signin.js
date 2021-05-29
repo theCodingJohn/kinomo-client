@@ -8,6 +8,7 @@ import schema from "../../utils/yupSchema";
 
 import styles from "../../styles/signin.module.scss";
 
+import AuthFormContainer from "../../components/AuthFormContainer";
 import AuthLogo from "../../components/AuthLogo";
 import AuthInput from "../../components/AuthInput";
 
@@ -38,7 +39,7 @@ const login = () => {
 
   return (
     <main className={styles.main}>
-      <div className={styles.form_container}>
+      <AuthFormContainer>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <AuthLogo />
           <div style={{ display: isError() }} className={styles.errors_wrapper}>
@@ -79,7 +80,7 @@ const login = () => {
             Don't have an account? <a href="/auth/signup">Signup now</a>
           </p>
         </div>
-      </div>
+      </AuthFormContainer>
     </main>
   );
 };

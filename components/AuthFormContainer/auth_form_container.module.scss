@@ -1,0 +1,18 @@
+@import "/styles/mixins";
+
+.form_container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  width: 90%;
+  background-color: rgba($color: #19171f, $alpha: 0.85);
+  color: #fff;
+  margin: 0 auto;
+  border-radius: 3px;
+  box-shadow: 0 0 20px #666;
+
+  @include mediumScreen() {
+    width: 360px;
+  }
+}
