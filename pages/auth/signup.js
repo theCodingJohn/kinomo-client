@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import authService from "../../services/auth.service";
@@ -92,7 +93,10 @@ const signup = () => {
 
         <div className={styles.footer}>
           <p>
-            Already have an account? <a href="/auth/signin">Signin now</a>
+            Already have an account?{" "}
+            <Link href="/auth/signin">
+              <a>Signin now</a>
+            </Link>
           </p>
         </div>
       </AuthFormContainer>
