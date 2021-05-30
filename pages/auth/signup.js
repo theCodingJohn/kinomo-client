@@ -14,6 +14,8 @@ import AuthLogo from "../../components/AuthLogo";
 import AuthInput from "../../components/AuthInput";
 import AuthSubmitButton from "../../components/AuthSubmitButton";
 
+import withoutAuth from "../../components/HOC/withoutAuth";
+
 const signup = () => {
   const [signupError, setSignupError] = useState();
 
@@ -104,4 +106,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default withoutAuth(signup);

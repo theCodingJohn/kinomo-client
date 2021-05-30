@@ -4,7 +4,7 @@ const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
   const [loggedUser, setLoggedUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const getLocalStorageData = () => {
@@ -13,16 +13,17 @@ export const AuthContextProvider = ({ children }) => {
         const user = JSON.parse(loggedUserJSON);
 
         setLoggedUser(user);
+        setIsAuthenticated(true);
       }
-
-      setIsLoading(false);
     };
 
     getLocalStorageData();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedUser, isLoading, setLoggedUser }}>
+    <AuthContext.Provider
+      value={{ loggedUser, setLoggedUser, isAuthenticated }}
+    >
       {children}
     </AuthContext.Provider>
   );
