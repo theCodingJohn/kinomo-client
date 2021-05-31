@@ -110,7 +110,7 @@
   .movie_name {
     margin: 15px 0 10px;
 
-    @include largeScreen() {
+    @include mediumScreen() {
       margin: 25px 0 20px;
     }
 
@@ -139,6 +139,39 @@
 
     @include mediumScreen() {
       font-size: 17px;
+    }
+  }
+
+  .ratings {
+    display: flex;
+    margin-top: 15px;
+
+    @include mediumScreen() {
+      margin-top: 25px;
+    }
+
+    .rating {
+      max-width: 73px;
+      height: 73px;
+      margin-right: 10px;
+      font-size: 16px;
+      letter-spacing: 1px;
+
+      @include mediumScreen() {
+        font-size: 18px;
+      }
+
+      .value {
+        font-size: 22px;
+
+        @include mediumScreen() {
+          font-size: 26px;
+        }
+      }
+    }
+
+    .site_name {
+      display: inline-block;
     }
   }
 }

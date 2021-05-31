@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import Slider from "react-slick";
+import Image from "next/image";
+import Link from "next/link";
 import ShowMoreText from "react-show-more-text";
 
 import styles from "../../styles/movies.module.scss";
@@ -69,7 +71,9 @@ const index = () => {
                     </div>
                     <div className={styles.movie_name}>
                       <h1>
-                        {movie.title}{" "}
+                        <Link href={`/movies/${movie.id}`}>
+                          <a>{movie.title}</a>
+                        </Link>{" "}
                         <span className={styles.release_date}>
                           ({movie.release_date.split("-")[0]})
                         </span>
@@ -79,6 +83,19 @@ const index = () => {
                       <ShowMoreText lines={4} more="[more]" less="[less]">
                         {movie.overview}
                       </ShowMoreText>
+                    </div>
+                    <div className={styles.ratings}>
+                      <div className={styles.rating}>
+                        <span>
+                          <span className={styles.value}>
+                            {movie.vote_average}
+                          </span>
+                          /10
+                        </span>
+                        <span className={styles.site_name}>
+                          <Image src="/icons/tmdb.svg" width={50} height={50} />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
