@@ -79,7 +79,7 @@ const login = () => {
           <p>
             Don't have an account?{" "}
             <Link href="/auth/signup">
-              <a>Signup now</a>
+              <a>Join now</a>
             </Link>
           </p>
         </div>

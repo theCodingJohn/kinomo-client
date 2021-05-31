@@ -99,7 +99,7 @@ const signup = () => {
           <p>
             Already have an account?{" "}
             <Link href="/auth/signin">
-              <a>Signin now</a>
+              <a>Sign In</a>
             </Link>
           </p>
         </div>
