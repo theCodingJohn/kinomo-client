@@ -15,6 +15,8 @@ export const getServerSideProps = async (context) => {
   const { username } = context.params;
   const user = await userService.getUser(username);
 
+  if (!user) context.res.statusCode = 404;
+
   return {
     props: { user: user },
   };
