@@ -1,0 +1,14 @@
+@import "/styles/mixins";
+
+.header {
+  position: absolute;
+  top: 0;
+  height: 45px;
+  width: 100vw;
+  background-color: rgba(10, 10, 10, 0.62);
+  z-index: 99;
+
+  @include mediumScreen() {
+    height: 50px;
+  }
+}

@@ -21,3 +21,7 @@ a {
 li {
   list-style-type: none;
 }
+
+.slick-initialized .slick-slide.slick-active {
+  z-index: 1;
+}

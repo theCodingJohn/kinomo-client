@@ -16,7 +16,10 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.6.7",
+    "react-show-more-text": "^1.4.6",
+    "react-slick": "^0.28.1",
     "sass": "^1.32.12",
+    "slick-carousel": "^1.8.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {

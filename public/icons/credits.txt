@@ -1,0 +1,3 @@
+https://fontawesome.com/license
+chevron-left.svg
+chevron-right.svg
