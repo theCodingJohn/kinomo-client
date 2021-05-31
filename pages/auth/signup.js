@@ -10,7 +10,9 @@ import schema from "../../utils/yupSchema";
 import styles from "../../styles/signup.module.scss";
 
 import AuthFormContainer from "../../components/AuthFormContainer";
+import AuthForm from "../../components/AuthForm";
 import AuthLogo from "../../components/AuthLogo";
+import AuthInputContainer from "../../components/AuthInputContainer";
 import AuthInput from "../../components/AuthInput";
 import AuthSubmitButton from "../../components/AuthSubmitButton";
 
@@ -49,7 +51,7 @@ const signup = () => {
   return (
     <main className={styles.main}>
       <AuthFormContainer>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <AuthForm options={{ handleSubmit, onSubmit }}>
           <AuthLogo />
           <div style={{ display: isError() }} className={styles.errors_wrapper}>
             <ul>
@@ -59,7 +61,7 @@ const signup = () => {
               {signupError && <li>{signupError}</li>}
             </ul>
           </div>
-          <div className={styles.inputs_container}>
+          <AuthInputContainer>
             <AuthInput
               register={register}
               placeholder="Email"
@@ -88,10 +90,10 @@ const signup = () => {
               icon="icon_password"
               inputType="password"
             />
-          </div>
+          </AuthInputContainer>
 
           <AuthSubmitButton value="Sign Up" />
-        </form>
+        </AuthForm>
 
         <div className={styles.footer}>
           <p>
