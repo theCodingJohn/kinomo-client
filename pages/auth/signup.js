@@ -44,7 +44,7 @@ const signup = () => {
       return setSignupError(user.error);
     }
 
-    router.push(`/users/${user.username}`);
+    router.push(`/auth/signin`);
   };
 
   const isError = () =>
