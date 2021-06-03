@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import authService from "../../services/auth.service";
@@ -16,13 +15,11 @@ import AuthLogo from "../../components/AuthLogo";
 import AuthInputContainer from "../../components/AuthInputContainer";
 import AuthInput from "../../components/AuthInput";
 import AuthSubmitButton from "../../components/AuthSubmitButton";
-import Redirect from "../../components/HOC/Redirect";
 
 import withoutAuth from "../../components/HOC/withoutAuth";
 
 const login = () => {
   const [loginError, setLoginError] = useState(null);
-  const router = useRouter();
 
   const {
     register,
@@ -42,7 +39,7 @@ const login = () => {
     window.localStorage.setItem("loggedUser", JSON.stringify(user));
     e.target.reset();
 
-    router.push(`/users/${user.username}`);
+    window.location.href = `/users/${user.username}`;
   };
 
   const isError = () =>

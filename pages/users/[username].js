@@ -1,11 +1,15 @@
 import userService from "../../services/user.service";
 
+import Layout from "../../components/Layout";
+
 const profile = ({ user }) => {
   return (
-    <div>
-      <h1>Profile</h1>
-      {user?.username}
-    </div>
+    <Layout>
+      <div>
+        <h1>Profile</h1>
+        {user?.username}
+      </div>
+    </Layout>
   );
 };
 
