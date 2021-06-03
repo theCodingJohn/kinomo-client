@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/router";
 
 import authService from "../../services/auth.service";
 
@@ -17,9 +18,12 @@ import AuthInput from "../../components/AuthInput";
 import AuthSubmitButton from "../../components/AuthSubmitButton";
 
 import withoutAuth from "../../components/HOC/withoutAuth";
+import { route } from "next/dist/next-server/server/router";
 
 const signup = () => {
   const [signupError, setSignupError] = useState();
+
+  const router = useRouter();
 
   const {
     register,
@@ -40,7 +44,7 @@ const signup = () => {
       return setSignupError(user.error);
     }
 
-    console.log(user);
+    router.push(`/users/${user.username}`);
   };
 
   const isError = () =>

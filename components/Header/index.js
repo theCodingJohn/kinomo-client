@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useAuth } from "../../contexts/auth/AuthContext";
 
@@ -11,8 +12,6 @@ import { show, hide } from "./gsap";
 
 import profilePic from "../../public/images/avatar.jpg";
 
-import Redirect from "../HOC/Redirect";
-
 const Header = () => {
   const [avatar, setAvatar] = useState(profilePic);
   const [user, setUser] = useState("User");
@@ -22,6 +21,8 @@ const Header = () => {
   const { isAuthenticated } = useAuth();
   const mobileAppLinksRef = useRef();
   const mobileUserLinksRef = useRef();
+
+  const router = useRouter();
 
   useEffect(() => {
     if (window.localStorage.loggedUser) {
@@ -67,7 +68,7 @@ const Header = () => {
 
   const signOut = () => {
     window.localStorage.removeItem("loggedUser");
-    window.location.href = "/auth/signin";
+    router.push("/auth/signin");
   };
 
   return (
