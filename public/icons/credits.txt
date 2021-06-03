@@ -1,3 +1,6 @@
 https://fontawesome.com/license
 chevron-left.svg
 chevron-right.svg
+search.svg
+bars.svg
+user.svg
