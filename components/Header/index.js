@@ -11,16 +11,17 @@ import { show, hide } from "./gsap";
 
 import profilePic from "../../public/images/avatar.jpg";
 
+import Redirect from "../HOC/Redirect";
+
 const Header = () => {
   const [avatar, setAvatar] = useState(profilePic);
   const [user, setUser] = useState("User");
-  const [isOpen, setIsOpen] = useState({
-    appLinks: false,
-    searchBar: false,
-  });
+  const [isAppLinksOpen, setIsAppLinksOpen] = useState(false);
+  const [isUserLinksOpen, setIsUserLinksOpen] = useState(false);
 
   const { isAuthenticated } = useAuth();
-  const mobileLinksRef = useRef();
+  const mobileAppLinksRef = useRef();
+  const mobileUserLinksRef = useRef();
 
   useEffect(() => {
     if (window.localStorage.loggedUser) {
@@ -37,18 +38,36 @@ const Header = () => {
   }, []);
 
   const toogleAppLinks = () => {
-    if (!isOpen.appLinks) {
-      setIsOpen({ ...isOpen, appLinks: !isOpen.appLinks });
-      return show(mobileLinksRef.current);
+    if (isUserLinksOpen) {
+      setIsUserLinksOpen(!isUserLinksOpen);
+      hide(mobileUserLinksRef.current);
     }
-    setIsOpen({ ...isOpen, appLinks: !isOpen.appLinks });
-    hide(mobileLinksRef.current);
+
+    if (!isAppLinksOpen) {
+      setIsAppLinksOpen(!isAppLinksOpen);
+      return show(mobileAppLinksRef.current);
+    }
+    setIsAppLinksOpen(!isAppLinksOpen);
+    hide(mobileAppLinksRef.current);
   };
 
-  const toogleSearchBar = () => {
-    if (!isOpen.searchBar) {
-      setIsOpen({ ...isOpen, searchBar: !isOpen.searchBar });
+  const toggleUserLinks = () => {
+    if (isAppLinksOpen) {
+      setIsAppLinksOpen(!isAppLinksOpen);
+      hide(mobileAppLinksRef.current);
     }
+
+    if (!isUserLinksOpen) {
+      setIsUserLinksOpen(!isUserLinksOpen);
+      return show(mobileUserLinksRef.current);
+    }
+    setIsUserLinksOpen(!isUserLinksOpen);
+    hide(mobileUserLinksRef.current);
+  };
+
+  const signOut = () => {
+    window.localStorage.removeItem("loggedUser");
+    window.location.href = "/auth/signin";
   };
 
   return (
@@ -97,7 +116,7 @@ const Header = () => {
               </div>
 
               {isAuthenticated && (
-                <div className={styles.user_info}>
+                <div onClick={toggleUserLinks} className={styles.user_info}>
                   <img className={styles.avatar} src={avatar} alt="avatar" />
                   <span className={styles.name}>{user}</span>
                 </div>
@@ -106,11 +125,20 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <div ref={mobileLinksRef} className={styles.mobile_app_links}>
+
+      <div ref={mobileAppLinksRef} className={styles.mobile_app_links}>
         <div>
           <Link href="/movies">
             <a>Movies</a>
           </Link>
+        </div>
+      </div>
+
+      <div ref={mobileUserLinksRef} className={styles.mobile_user_links}>
+        <div>
+          <button className={styles.sign_out_button} onClick={signOut}>
+            Sign Out
+          </button>
         </div>
       </div>
     </header>
