@@ -110,7 +110,7 @@ const index = () => {
 
 // export const getServerSideProps = async () => {
 //   const popularMovies = await movieService.getPopularMovies();
-//   return { props: { popularMovies } };
+//   return { props: { popularMovies: popularMovies.results } };
 // };
 
 export default index;

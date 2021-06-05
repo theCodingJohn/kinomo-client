@@ -13,8 +13,6 @@ const profile = ({ user }) => {
   );
 };
 
-export default profile;
-
 export const getServerSideProps = async (context) => {
   const { username } = context.params;
   const user = await userService.getUser(username);
@@ -25,3 +23,5 @@ export const getServerSideProps = async (context) => {
     props: { user: user },
   };
 };
+
+export default profile;

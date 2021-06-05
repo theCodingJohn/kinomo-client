@@ -7,6 +7,12 @@ const getPopularMovies = async () => {
   return res.data;
 };
 
+const getMovie = async (id) => {
+  const res = await axios.get(`${baseUrl}${id}${api_key}`);
+  return res.data;
+};
+
 export default {
   getPopularMovies,
+  getMovie,
 };
