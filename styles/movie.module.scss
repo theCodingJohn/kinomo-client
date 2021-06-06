@@ -1,0 +1,205 @@
+@import "/styles/mixins";
+@import "/styles/variables";
+
+.hero {
+  width: 100%;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: linear-gradient(to bottom, rbga(0, 0, 0, 0.1));
+  color: #fff;
+
+  @include mediumScreen() {
+    height: 550px;
+  }
+}
+
+.overlay {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(36, 36, 41, 1)
+  );
+  padding: 45px 20px 0;
+
+  @include smallScreen() {
+    padding: 45px 60px 0;
+  }
+
+  @include mediumScreen() {
+    padding: 50px 90px 0;
+  }
+
+  @include largeScreen() {
+    padding: 50px 150px 0;
+  }
+}
+
+.right_wrapper {
+  flex-basis: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.left_wrapper {
+  width: 120px;
+
+  @include smallScreen() {
+    width: 150px;
+  }
+
+  @include mediumScreen() {
+    width: 232px;
+  }
+}
+
+.title {
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 5px;
+
+  @include mediumScreen() {
+    font-size: 34px;
+  }
+}
+
+.release_year {
+  font-size: 16px;
+  color: FFFFFF;
+  opacity: 0.6;
+  margin-right: 10px;
+
+  @include mediumScreen() {
+    font-size: 22px;
+  }
+}
+
+.certification {
+  display: inline-block;
+  font-size: 12px;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  vertical-align: center;
+  padding: 2px 4px 1px;
+}
+
+.poster {
+  width: 100%;
+  border-radius: 6px;
+  position: relative;
+  top: 60px;
+
+  @include smallScreen() {
+    top: 75px;
+  }
+
+  @include mediumScreen() {
+    top: 116px;
+  }
+}
+
+.movie_details_wrapper {
+  display: flex;
+  color: #fff;
+
+  padding: 10px 20px;
+
+  @include smallScreen() {
+    padding: 10px 60px;
+  }
+
+  @include mediumScreen() {
+    padding: 10px 90px;
+  }
+
+  @include largeScreen() {
+    padding: 10px 150px;
+  }
+}
+
+.overview_wrapper {
+  padding-right: 20px;
+  width: 100%;
+  max-width: 475px;
+
+  .tagline {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-bottom: 10px;
+
+    @include mediumScreen() {
+      font-size: 15px;
+    }
+  }
+
+  .overview {
+    line-height: 1.2;
+
+    @include mediumScreen() {
+      font-size: 17px;
+    }
+  }
+}
+
+.actors_container {
+  margin-top: 30px;
+  overflow: hidden;
+
+  .actors_heading {
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    @include mediumScreen() {
+      font-size: 22px;
+    }
+  }
+
+  .actors_scroller {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    mask-image: linear-gradient(90deg, rgba(36, 36, 41, 1) 80%, transparent);
+
+    &::-webkit-scrollbar {
+      height: 5px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $main-color;
+      border-radius: 30px;
+    }
+  }
+
+  .actor {
+    display: inline-block;
+    width: 96px;
+
+    @include mediumScreen() {
+      margin-right: 10px;
+    }
+  }
+
+  .actor_image {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .name,
+  .character {
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
