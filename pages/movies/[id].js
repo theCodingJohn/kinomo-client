@@ -51,7 +51,7 @@ const MoviePage = () => {
             <div className={styles.actors_scroller}>
               {movie.credits.cast.map((cast) => {
                 return (
-                  <div className={styles.actor}>
+                  <div key={cast.id} className={styles.actor}>
                     <div className={styles.actor_image}>
                       <img
                         src={`https://image.tmdb.org/t/p/w780/${cast.profile_path}`}

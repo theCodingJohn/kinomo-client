@@ -1,0 +1,178 @@
+@import "/styles/mixins";
+@import "/styles/variables";
+
+.popular_movies_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.arrow_button {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 200;
+  width: 18px;
+  height: 0;
+  fill: $light-color;
+
+  @include mediumScreen() {
+    width: 30px;
+  }
+}
+
+.prev {
+  left: 10px;
+
+  @include mediumScreen() {
+    left: 45px;
+  }
+
+  @include largeScreen() {
+    left: 64px;
+  }
+}
+
+.next {
+  right: 10px;
+
+  @include mediumScreen() {
+    right: 45px;
+  }
+
+  @include largeScreen() {
+    right: 64px;
+  }
+}
+
+.slide {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: $light-color;
+}
+
+.overlay {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(33, 30, 30, 0.8);
+  padding: 45px;
+
+  @include mediumScreen() {
+    padding: 50px 90px;
+  }
+
+  @include largeScreen() {
+    padding: 50px 175px;
+  }
+}
+
+.text_wrapper {
+  width: 100%;
+
+  @include smallScreen() {
+    margin-left: 15px;
+  }
+
+  @include mediumScreen() {
+    margin-left: 30px;
+  }
+
+  @include largeScreen() {
+    margin-left: 0;
+  }
+
+  .genres {
+    font-size: 15px;
+
+    @include mediumScreen() {
+      font-size: 20px;
+    }
+
+    .genre {
+      padding-right: 10px;
+      margin-right: 10px;
+      border-right: 1px solid $light-color;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  .movie_name {
+    margin: 15px 0 10px;
+
+    @include mediumScreen() {
+      margin: 25px 0 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+
+      @include mediumScreen() {
+        font-size: 42px;
+      }
+    }
+
+    .release_date {
+      font-size: 15px;
+
+      @include mediumScreen() {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .overview {
+    max-width: 537px;
+    font-size: 16px;
+    line-height: 1.2;
+
+    @include mediumScreen() {
+      font-size: 17px;
+    }
+  }
+
+  .ratings {
+    display: flex;
+    margin-top: 15px;
+
+    @include mediumScreen() {
+      margin-top: 25px;
+    }
+
+    .rating {
+      max-width: 73px;
+      height: 73px;
+      margin-right: 10px;
+      font-size: 16px;
+      letter-spacing: 1px;
+
+      @include mediumScreen() {
+        font-size: 18px;
+      }
+
+      .value {
+        font-size: 22px;
+
+        @include mediumScreen() {
+          font-size: 26px;
+        }
+      }
+    }
+
+    .site_name {
+      display: inline-block;
+    }
+  }
+}
