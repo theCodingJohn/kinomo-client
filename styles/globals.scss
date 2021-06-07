@@ -1,4 +1,5 @@
 @import "./fonts";
+@import "./variables";
 
 *,
 *::after,
@@ -11,7 +12,7 @@
 html,
 body {
   font-family: "Freight", sans-serif;
-  background: rgba(36, 36, 41, 1);
+  background: $main-bg;
 }
 
 a {

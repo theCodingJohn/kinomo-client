@@ -8,7 +8,9 @@ const getPopularMovies = async () => {
 };
 
 const getMovie = async (id) => {
-  const res = await axios.get(`${baseUrl}${id}${api_key}`);
+  const res = await axios.get(
+    `${baseUrl}${id}${api_key}&append_to_response=release_dates,credits,videos`
+  );
   return res.data;
 };
 

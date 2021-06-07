@@ -5,8 +5,6 @@ import styles from "../../styles/movie.module.scss";
 
 import movieService from "../../services/movies.service";
 
-import { StarIcon } from "../../utils/svgs";
-
 import Layout from "../../components/Layout";
 
 const MoviePage = () => {
