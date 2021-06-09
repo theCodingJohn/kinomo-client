@@ -2,186 +2,187 @@
 @import "/styles/mixins";
 
 .header {
-  position: absolute;
-  top: 0;
-  height: 45px;
-  width: 100%;
-  background-color: rgba(10, 10, 10, 0.62);
-  z-index: 99;
-  color: #fff;
-  font-size: 14px;
-
-  @include mediumScreen() {
-    height: 50px;
-    font-size: 16px;
-  }
-}
-
-.nav {
-  padding: 0 20px;
-  height: 100%;
-
-  @include mediumScreen() {
-    padding: 0 40px;
-  }
-
-  @include largeScreen() {
-    padding: 0 64px;
-  }
-}
-
-.row {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100%;
-}
-
-.logo_wrapper {
-  flex-basis: 100%;
-
-  .logo {
-    font-family: "Core Sans G Rounded", sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    text-transform: uppercase;
-
-    .kino {
-      position: relative;
-      color: #fff;
-      left: 7px;
-    }
-
-    .mo {
-      color: $main-color;
-    }
-  }
-}
-
-.left {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-}
-
-.app_link_container {
-  .app_link {
-    display: none;
-
-    @include mediumScreen() {
-      display: flex;
-      align-items: center;
-      margin-right: 42px;
-    }
-  }
-}
-
-.user_link_container {
-  display: flex;
-
-  .auth_link {
-    display: flex;
-  }
-
-  .user_info {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  .avatar {
-    width: 26px;
-    height: 26px;
-    border-radius: 100%;
-
-    @include mediumScreen() {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
-  }
-
-  .name {
-    display: none;
-    text-transform: capitalize;
-
-    @include mediumScreen() {
-      display: inline-block;
-    }
-  }
-
-  .call_to_action {
-    display: none;
-    background: $main-color;
-    padding: 6px 8px;
-
-    @include mediumScreen() {
-      display: inline-block;
-    }
-  }
-
-  .signin {
-    display: none;
-    padding: 6px 8px;
-    margin-left: 5px;
-
-    @include mediumScreen() {
-      display: inline-block;
-    }
-  }
-}
-
-.icon_container {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-
-  @include mediumScreen() {
-    display: none;
-  }
-
-  .menu_bar {
-    display: flex;
-    align-items: center;
-    width: 19px;
-    margin-right: 10px;
-    align-self: center;
-    cursor: pointer;
-  }
-
-  .user_icon {
-    display: flex;
-    align-items: center;
-    width: 17px;
-    align-self: center;
-  }
-}
-
-.mobile_app_links,
-.mobile_user_links {
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 10, 10, 0.62);
   width: 100%;
-  height: 40px;
-  transform: scaleY(0);
-  transform-origin: top;
-  font-size: 14px;
+  background-color: $nav-bg;
+  color: $white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25), 0px 3px 2px rgba(0, 0, 0, 0.25);
+  z-index: 99;
+}
+
+.nav {
+  background-color: inherit;
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 15px;
 
   @include mediumScreen() {
+    max-width: 596px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 60px;
+  }
+
+  @include largeScreen() {
+    max-width: 950px;
+  }
+
+  .row1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .row2 {
     display: none;
+    align-items: center;
+
+    @include mediumScreen() {
+      display: none !important;
+    }
   }
 }
 
-.sign_out_button {
-  font-family: "Freight", sans-serif;
-  cursor: pointer;
-  color: #fff;
-  border: none;
-  background: none;
+.icons_wrapper {
+  display: flex;
+
+  a {
+    display: flex;
+    place-content: center center;
+    width: 32px;
+    height: 29px;
+
+    @include mediumScreen() {
+      width: 42px;
+    }
+  }
+
+  .icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 20px;
+    fill: $white;
+    transition: 300ms ease;
+    margin-left: 12px;
+
+    &:hover {
+      fill: $main-color;
+      transition: 300ms ease;
+    }
+
+    @include mediumScreen() {
+      width: 22px;
+    }
+  }
+
+  .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    @include mediumScreen() {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .search_icon_mobile {
+    @include mediumScreen() {
+      display: none;
+    }
+  }
+}
+
+.search_form_wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+
+  form {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  .movie_input {
+    height: 20px;
+    width: 100%;
+    box-shadow: 0px 1px 0px #bdbdc5, inset 0px 1px 2px rgba(26, 26, 29, 0.63);
+    border-radius: 4px;
+    border: none;
+    padding: 4px 24px 4px 6px;
+  }
+
+  .search_icon {
+    position: absolute;
+    right: 6px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 11px;
+    height: 11px;
+    fill: $grey-1;
+  }
+}
+
+.links_container {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.links_wrapper {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  right: 0;
+  background: $nav-bg;
+  width: 99px;
+  min-height: 31px;
+  border-radius: 0px 0px 0px 4px;
   font-size: 14px;
+  font-weight: 600;
+  padding: 7px;
+  z-index: -1;
+
+  a {
+    transition: 300ms ease;
+
+    &:hover {
+      color: $main-color;
+      transition: 300ms ease;
+    }
+  }
+
+  @include mediumScreen() {
+    border-radius: 4px;
+  }
+}
+
+.menu_links_wrapper {
+  bottom: -33px;
+  transform: translateY(-33px);
+}
+
+.user_links_wrapper {
+  transform: translateY(-63px);
+
+  li {
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-top: 2px;
+      margin-bottom: 0;
+    }
+  }
+
+  .signout_button {
+    color: $red-1;
+  }
 }

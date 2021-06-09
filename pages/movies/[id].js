@@ -1,4 +1,4 @@
-import { movie, genres } from "../../utils/helpers";
+import { movie, genres, popularMovies } from "../../utils/helpers";
 import { dateToWord } from "../../utils/dateToWord";
 
 import styles from "../../styles/movie.module.scss";
@@ -6,6 +6,12 @@ import styles from "../../styles/movie.module.scss";
 import movieService from "../../services/movies.service";
 
 import Layout from "../../components/Layout";
+
+import {
+  getReleaseYear,
+  getCertification,
+  getCasts,
+} from "../../utils/movieDataHOC";
 
 const MoviePage = () => {
   return (
@@ -21,15 +27,13 @@ const MoviePage = () => {
             <div>
               <h1 className={styles.title}>{movie.title}</h1>
               <span className={styles.release_year}>
-                {movie.release_date.split("-")[0]}
+                {getReleaseYear(movie)}
               </span>
-              <span className={styles.certification}>
-                {
-                  movie.release_dates.results.find(
-                    (result) => result.iso_3166_1 === "US"
-                  ).release_dates[0].certification
-                }
-              </span>
+              {getCertification(movie) && (
+                <span className={styles.certification}>
+                  {getCertification(movie)}
+                </span>
+              )}
             </div>
           </div>
           <div className={styles.left_wrapper}>
@@ -49,7 +53,7 @@ const MoviePage = () => {
           <div className={styles.actors_container}>
             <h2 className={styles.actors_heading}>Actors</h2>
             <div className={styles.actors_scroller}>
-              {movie.credits.cast.map((cast) => {
+              {getCasts(movie).map((cast) => {
                 return (
                   <div key={cast.id} className={styles.actor}>
                     <div className={styles.actor_image}>

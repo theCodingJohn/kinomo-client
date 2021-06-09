@@ -17,7 +17,7 @@
   z-index: 200;
   width: 18px;
   height: 0;
-  fill: $light-color;
+  fill: $white;
 
   @include mediumScreen() {
     width: 30px;
@@ -55,7 +55,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  color: $light-color;
+  color: $white;
 }
 
 .overlay {
@@ -100,7 +100,7 @@
     .genre {
       padding-right: 10px;
       margin-right: 10px;
-      border-right: 1px solid $light-color;
+      border-right: 1px solid $white;
 
       &:last-child {
         border-right: none;
