@@ -45,7 +45,7 @@ const Header = () => {
   const toggleMenuLinks = () => {
     if (isUserLinksOpen) {
       setUserLinks(false);
-      hideLinks(userLinksRef.current, "translateY(-63px)");
+      hideLinks(userLinksRef.current);
     }
 
     if (!isMenuLinksOpen) {
@@ -54,13 +54,13 @@ const Header = () => {
     }
 
     setMenuLinks(!isMenuLinksOpen);
-    hideLinks(menuLinksRef.current, "translateY(-33px)");
+    hideLinks(menuLinksRef.current);
   };
 
   const toggleUserLinks = () => {
     if (isMenuLinksOpen) {
       setMenuLinks(false);
-      hideLinks(menuLinksRef.current, "translateY(-33px)");
+      hideLinks(menuLinksRef.current);
     }
 
     if (!isUserLinksOpen) {
@@ -69,7 +69,7 @@ const Header = () => {
     }
 
     setUserLinks(!isUserLinksOpen);
-    hideLinks(userLinksRef.current, "translateY(-63px)");
+    hideLinks(userLinksRef.current);
   };
 
   const toggleSearchBar = () => {
@@ -98,9 +98,11 @@ const Header = () => {
               </Link>
             )}
             {isAuthenticated && (
-              <span onClick={toggleUserLinks} className={styles.icon}>
-                <img src={avatar} className={styles.avatar} alt="avatar" />
-              </span>
+              <>
+                <span onClick={toggleUserLinks} className={styles.icon}>
+                  <img src={avatar} className={styles.avatar} alt="avatar" />
+                </span>
+              </>
             )}
             <SearchIcon
               onClick={toggleSearchBar}

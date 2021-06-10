@@ -20,10 +20,11 @@
   padding: 10px 15px;
 
   @include mediumScreen() {
+    display: flex;
+    align-items: center;
     max-width: 596px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     height: 60px;
+    padding: 0;
   }
 
   @include largeScreen() {
@@ -33,6 +34,7 @@
   .row1 {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   .row2 {
@@ -134,6 +136,16 @@
   width: 100%;
   bottom: 0;
   left: 0;
+
+  @include mediumScreen() {
+    max-width: 596px;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  @include largeScreen() {
+    max-width: 950px;
+  }
 }
 
 .links_wrapper {
@@ -146,12 +158,14 @@
   width: 99px;
   min-height: 31px;
   border-radius: 0px 0px 0px 4px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 14px;
   font-weight: 600;
   padding: 7px;
   z-index: -1;
+  opacity: 0;
 
-  a {
+  li {
     transition: 300ms ease;
 
     &:hover {
@@ -161,18 +175,18 @@
   }
 
   @include mediumScreen() {
+    display: flex;
     border-radius: 4px;
   }
 }
 
 .menu_links_wrapper {
-  bottom: -33px;
-  transform: translateY(-33px);
+  @include mediumScreen() {
+    bottom: -42px;
+  }
 }
 
 .user_links_wrapper {
-  transform: translateY(-63px);
-
   li {
     margin-bottom: 5px;
 
@@ -184,5 +198,9 @@
 
   .signout_button {
     color: $red-1;
+  }
+
+  @include mediumScreen() {
+    bottom: -68px;
   }
 }
