@@ -6,6 +6,7 @@ import styles from "../../styles/movie.module.scss";
 import movieService from "../../services/movies.service";
 
 import Layout from "../../components/Layout";
+import Section from "../../components/Section";
 
 import {
   getReleaseYear,
@@ -16,7 +17,31 @@ import {
 const MoviePage = () => {
   return (
     <Layout>
-      <section
+      <Section
+        className={styles.hero}
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
+        }}
+      >
+        <div className={styles.overlay}></div>
+        <div className={styles.row}>
+          <div className={styles.text_wrapper}>
+            <h1 className={styles.title}>
+              {movie.title}{" "}
+              <span className={styles.release_year}>
+                {`(${getReleaseYear(movie)})`}
+              </span>
+            </h1>
+          </div>
+          <div className={styles.poster_wrapper}>
+            <img
+              className={styles.poster}
+              src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
+            />
+          </div>
+        </div>
+      </Section>
+      {/* <section
         className={styles.hero}
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
@@ -72,7 +97,7 @@ const MoviePage = () => {
           </div>
         </div>
         <div className={styles.left_wrapper}></div>
-      </section>
+      </section> */}
     </Layout>
   );
 };

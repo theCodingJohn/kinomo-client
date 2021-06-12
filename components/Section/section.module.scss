@@ -1,0 +1,13 @@
+@import "/styles/mixins";
+
+.section {
+  width: 100%;
+
+  @include mediumScreen() {
+    max-width: 596px;
+  }
+
+  @include largeScreen() {
+    max-width: 950px;
+  }
+}

@@ -3,199 +3,309 @@
 
 .hero {
   width: 100%;
-  height: 350px;
-  background-position: center;
+  max-width: none !important;
+  height: 274px;
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: linear-gradient(to bottom, rbga(0, 0, 0, 0.1));
   color: $white;
+  position: relative;
 
   @include mediumScreen() {
-    height: 550px;
+    height: 310px;
+  }
+
+  @include largeScreen() {
+    height: 340px;
+  }
+
+  .row {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    @include mediumScreen() {
+      max-width: 596px;
+    }
+
+    @include largeScreen() {
+      max-width: 950px;
+    }
+  }
+
+  .text_wrapper {
+    position: absolute;
+    width: calc(100% - 165px);
+    left: 15px;
+    bottom: 0;
+
+    @include mediumScreen() {
+      width: calc(100% - 170px);
+      left: 0;
+    }
+
+    @include largeScreen() {
+      width: calc(100% - 200px);
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -1%;
+      line-height: 0.9;
+
+      @include mediumScreen() {
+        font-size: 36px;
+      }
+    }
+
+    .release_year {
+      font-size: 14px;
+      font-weight: 400;
+      color: #bdbdc5;
+
+      @include mediumScreen() {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .poster_wrapper {
+    position: absolute;
+    bottom: calc(165px / -2);
+    right: 15px;
+    width: 110px;
+    box-shadow: inset 0px 1px 0px #e9eefc;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 4px;
+
+    @include mediumScreen() {
+      width: 170px;
+      right: 0;
+      bottom: calc(255px / -2);
+    }
+
+    @include largeScreen() {
+      width: 200px;
+      bottom: calc(300px / -2);
+    }
+
+    .poster {
+      width: 100%;
+    }
   }
 }
 
 .overlay {
-  display: flex;
-  align-items: flex-end;
+  width: 100%;
   height: 100%;
-  width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), $main-bg);
-  padding: 45px 20px 0;
-
-  @include smallScreen() {
-    padding: 45px 60px 0;
-  }
+  background: linear-gradient(90deg, rgba(36, 36, 41, 0) 77.66%, #242429 100%),
+    linear-gradient(270deg, rgba(36, 36, 41, 0) 77.66%, #242429 100%),
+    linear-gradient(180deg, rgba(36, 36, 41, 0.56) 0%, #242429 100%);
 
   @include mediumScreen() {
-    padding: 50px 90px 0;
+    background: linear-gradient(90deg, rgba(36, 36, 41, 0) 70.05%, #242429 100%),
+      linear-gradient(270deg, rgba(35, 35, 36, 0) 70.05%, #242429 98.31%),
+      linear-gradient(180deg, rgba(36, 36, 41, 0.56) 0%, #242429 100%);
   }
 
   @include largeScreen() {
-    padding: 50px 150px 0;
+    background: linear-gradient(
+        90deg,
+        rgba(36, 36, 41, 0) 50%,
+        #242829 99.72%,
+        #242829 99.72%
+      ),
+      linear-gradient(270deg, rgba(36, 36, 41, 0) 50%, #242429 98.86%),
+      linear-gradient(180deg, rgba(36, 36, 41, 0.56) 62.22%, #242429 100%);
   }
 }
 
-.right_wrapper {
-  flex-basis: 100%;
-  overflow: hidden;
-  width: 100%;
-}
+// .overlay {
+//   display: flex;
+//   align-items: flex-end;
+//   height: 100%;
+//   width: 100%;
+//   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), $main-bg);
+//   padding: 45px 20px 0;
 
-.left_wrapper {
-  width: 120px;
+//   @include smallScreen() {
+//     padding: 45px 60px 0;
+//   }
 
-  @include smallScreen() {
-    width: 150px;
-  }
+//   @include mediumScreen() {
+//     padding: 50px 90px 0;
+//   }
 
-  @include mediumScreen() {
-    width: 232px;
-  }
-}
+//   @include largeScreen() {
+//     padding: 50px 150px 0;
+//   }
+// }
 
-.title {
-  display: inline-block;
-  font-size: 18px;
-  margin-right: 5px;
+// .right_wrapper {
+//   flex-basis: 100%;
+//   overflow: hidden;
+//   width: 100%;
+// }
 
-  @include mediumScreen() {
-    font-size: 34px;
-  }
-}
+// .left_wrapper {
+//   width: 120px;
 
-.release_year {
-  font-size: 16px;
-  color: $white;
-  opacity: 0.6;
-  margin-right: 10px;
+//   @include smallScreen() {
+//     width: 150px;
+//   }
 
-  @include mediumScreen() {
-    font-size: 22px;
-  }
-}
+//   @include mediumScreen() {
+//     width: 232px;
+//   }
+// }
 
-.certification {
-  display: inline-block;
-  font-size: 12px;
-  border: 1px solid $white;
-  border-radius: 2px;
-  vertical-align: center;
-  padding: 2px 4px 1px;
-}
+// .title {
+//   display: inline-block;
+//   font-size: 18px;
+//   margin-right: 5px;
 
-.poster {
-  width: 100%;
-  border-radius: 6px;
-  position: relative;
-  top: 60px;
+//   @include mediumScreen() {
+//     font-size: 34px;
+//   }
+// }
 
-  @include smallScreen() {
-    top: 75px;
-  }
+// .release_year {
+//   font-size: 16px;
+//   color: $white;
+//   opacity: 0.6;
+//   margin-right: 10px;
 
-  @include mediumScreen() {
-    top: 116px;
-  }
-}
+//   @include mediumScreen() {
+//     font-size: 22px;
+//   }
+// }
 
-.movie_details_wrapper {
-  display: flex;
-  color: $white;
+// .certification {
+//   display: inline-block;
+//   font-size: 12px;
+//   border: 1px solid $white;
+//   border-radius: 2px;
+//   vertical-align: center;
+//   padding: 2px 4px 1px;
+// }
 
-  padding: 10px 20px;
+// .poster {
+//   width: 100%;
+//   border-radius: 6px;
+//   position: relative;
+//   top: 60px;
 
-  @include smallScreen() {
-    padding: 10px 60px;
-  }
+//   @include smallScreen() {
+//     top: 75px;
+//   }
 
-  @include mediumScreen() {
-    padding: 10px 90px;
-  }
+//   @include mediumScreen() {
+//     top: 116px;
+//   }
+// }
 
-  @include largeScreen() {
-    padding: 10px 150px;
-  }
-}
+// .movie_details_wrapper {
+//   display: flex;
+//   color: $white;
 
-.overview_wrapper {
-  padding-right: 20px;
-  width: 100%;
-  max-width: 475px;
+//   padding: 10px 20px;
 
-  .tagline {
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-style: italic;
-    margin-bottom: 10px;
+//   @include smallScreen() {
+//     padding: 10px 60px;
+//   }
 
-    @include mediumScreen() {
-      font-size: 15px;
-    }
-  }
+//   @include mediumScreen() {
+//     padding: 10px 90px;
+//   }
 
-  .overview {
-    line-height: 1.2;
+//   @include largeScreen() {
+//     padding: 10px 150px;
+//   }
+// }
 
-    @include mediumScreen() {
-      font-size: 17px;
-    }
-  }
-}
+// .overview_wrapper {
+//   padding-right: 20px;
+//   width: 100%;
+//   max-width: 475px;
 
-.actors_container {
-  margin-top: 30px;
-  overflow: hidden;
+//   .tagline {
+//     font-size: 14px;
+//     letter-spacing: 1px;
+//     font-style: italic;
+//     margin-bottom: 10px;
 
-  .actors_heading {
-    font-size: 18px;
-    margin-bottom: 20px;
+//     @include mediumScreen() {
+//       font-size: 15px;
+//     }
+//   }
 
-    @include mediumScreen() {
-      font-size: 22px;
-    }
-  }
+//   .overview {
+//     line-height: 1.2;
 
-  .actors_scroller {
-    white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    width: 100%;
-    mask-image: linear-gradient(90deg, rgba(36, 36, 41, 1) 80%, transparent);
+//     @include mediumScreen() {
+//       font-size: 17px;
+//     }
+//   }
+// }
 
-    &::-webkit-scrollbar {
-      height: 5px;
-      background-color: transparent;
-    }
+// .actors_container {
+//   margin-top: 30px;
+//   overflow: hidden;
 
-    &::-webkit-scrollbar-thumb {
-      background-color: $main-color;
-      border-radius: 30px;
-    }
-  }
+//   .actors_heading {
+//     font-size: 18px;
+//     margin-bottom: 20px;
 
-  .actor {
-    display: inline-block;
-    width: 96px;
+//     @include mediumScreen() {
+//       font-size: 22px;
+//     }
+//   }
 
-    @include mediumScreen() {
-      margin-right: 10px;
-    }
-  }
+//   .actors_scroller {
+//     white-space: nowrap;
+//     overflow-x: scroll;
+//     overflow-y: hidden;
+//     width: 100%;
+//     mask-image: linear-gradient(90deg, rgba(36, 36, 41, 1) 80%, transparent);
 
-  .actor_image {
-    width: 100%;
+//     &::-webkit-scrollbar {
+//       height: 5px;
+//       background-color: transparent;
+//     }
 
-    img {
-      width: 100%;
-    }
-  }
+//     &::-webkit-scrollbar-thumb {
+//       background-color: $main-color;
+//       border-radius: 30px;
+//     }
+//   }
 
-  .name,
-  .character {
-    font-size: 12px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-}
+//   .actor {
+//     display: inline-block;
+//     width: 96px;
+
+//     @include mediumScreen() {
+//       margin-right: 10px;
+//     }
+//   }
+
+//   .actor_image {
+//     width: 100%;
+
+//     img {
+//       width: 100%;
+//     }
+//   }
+
+//   .name,
+//   .character {
+//     font-size: 12px;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//     overflow: hidden;
+//   }
+// }
