@@ -126,8 +126,6 @@
 }
 
 .director_container {
-  color: $white;
-
   .row {
     width: calc(100% - 110px);
   }
@@ -151,6 +149,37 @@
 
     @include mediumScreen() {
       font-size: 16px;
+    }
+  }
+}
+
+.summary_container {
+  .tagline {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 21px;
+    margin: 40px 0 10px;
+    max-width: 210px;
+    color: hsla(240, 6%, 76%, 1);
+
+    @include mediumScreen() {
+      max-width: 346px;
+      min-height: 38px;
+    }
+
+    @include largeScreen() {
+      max-width: 546px;
+      min-height: 0;
+    }
+  }
+
+  .overview {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    @include largeScreen() {
+      max-width: calc(100% - 200px);
     }
   }
 }

@@ -49,6 +49,12 @@ const MoviePage = () => {
           </span>
         </div>
       </Section>
+      <Section className={styles.summary_container}>
+        <div className={styles.row}>
+          <p className={styles.tagline}>{movie.tagline}</p>
+          <p className={styles.overview}>{movie.overview}</p>
+        </div>
+      </Section>
       {/* <section
         className={styles.hero}
         style={{
