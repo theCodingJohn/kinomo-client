@@ -1,9 +1,11 @@
 @import "/styles/mixins";
 
 .section {
+  padding: 0 15px;
   width: 100%;
 
   @include mediumScreen() {
+    padding: 0;
     max-width: 596px;
   }
 

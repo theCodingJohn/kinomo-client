@@ -41,6 +41,14 @@ const MoviePage = () => {
           </div>
         </div>
       </Section>
+      <Section className={styles.director_container}>
+        <div className={styles.row}>
+          <span className={styles.directed_by}>Directed by</span>
+          <span className={styles.director}>
+            {movie.credits.crew.find((crew) => crew.job === "Director").name}
+          </span>
+        </div>
+      </Section>
       {/* <section
         className={styles.hero}
         style={{
