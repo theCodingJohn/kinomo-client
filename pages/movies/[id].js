@@ -7,11 +7,14 @@ import movieService from "../../services/movies.service";
 
 import Layout from "../../components/Layout";
 import Section from "../../components/Section";
+import Scroller from "../../components/Scroller";
+import ImageCard from "../../components/ImageCard";
 
 import {
   getReleaseYear,
   getCertification,
   getCasts,
+  getCrews,
 } from "../../utils/movieDataHOC";
 
 const MoviePage = () => {
@@ -54,6 +57,22 @@ const MoviePage = () => {
           <p className={styles.tagline}>{movie.tagline}</p>
           <p className={styles.overview}>{movie.overview}</p>
         </div>
+      </Section>
+      <Section className={styles.actors_container}>
+        <h2 className={styles.h2}>Actors</h2>
+        <Scroller>
+          {getCasts(movie).map((cast) => {
+            return <ImageCard person={cast} className={styles.card} />;
+          })}
+        </Scroller>
+      </Section>
+      <Section className={styles.crew_container}>
+        <h2 className={styles.h2}>Crews</h2>
+        <Scroller>
+          {getCrews(movie).map((crew) => {
+            return <ImageCard person={crew} className={styles.card} />;
+          })}
+        </Scroller>
       </Section>
       {/* <section
         className={styles.hero}

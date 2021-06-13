@@ -8,3 +8,5 @@ export const getCertification = (movie) =>
     .release_dates.find((item) => item.certification !== "").certification;
 
 export const getCasts = (movie) => movie.credits.cast;
+
+export const getCrews = (movie) => movie.credits.crew;
