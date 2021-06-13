@@ -163,8 +163,10 @@
     color: hsla(240, 6%, 76%, 1);
 
     @include mediumScreen() {
+      font-size: 15px;
       max-width: 346px;
       min-height: 38px;
+      line-height: 18.75px;
     }
 
     @include largeScreen() {
