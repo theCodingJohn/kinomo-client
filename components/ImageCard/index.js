@@ -1,13 +1,20 @@
 import styles from "./image_card.module.scss";
 
+import avatar from "../../public/images/silhouette.jpg";
+
 const ImageCard = (props) => {
   return (
     <div key={props.person.id} className={`${props.className} ${styles.card}`}>
       <div className={styles.overlay}></div>
-      <img
-        className={styles.image}
-        src={`https://image.tmdb.org/t/p/w780/${props.person.profile_path}`}
-      />
+      {!!props.person.profile_path && (
+        <img
+          className={styles.image}
+          src={`https://image.tmdb.org/t/p/w780/${props.person.profile_path}`}
+        />
+      )}
+      {!props.person.profile_path && (
+        <img className={`${styles.silhouette} ${styles.image}`} src={avatar} />
+      )}
 
       <div className={styles.text_wrapper}>
         <div className={styles.text}>

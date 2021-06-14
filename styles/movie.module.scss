@@ -17,6 +17,11 @@
   margin-right: 14px;
 }
 
+.detail_box {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
 .hero {
   width: 100%;
   max-width: none !important;
@@ -33,7 +38,7 @@
   }
 
   @include largeScreen() {
-    height: 340px;
+    height: 450px;
   }
 
   .overlay {
@@ -202,6 +207,7 @@
 
     @include largeScreen() {
       max-width: calc(100% - 200px);
+      padding-right: 15px;
     }
   }
 }
@@ -265,6 +271,9 @@
   }
 }
 
+.box_wrapper {
+  margin-top: -10px;
+}
 // .overlay {
 //   display: flex;
 //   align-items: flex-end;

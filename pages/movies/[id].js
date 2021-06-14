@@ -10,12 +10,14 @@ import Layout from "../../components/Layout";
 import Section from "../../components/Section";
 import Scroller from "../../components/Scroller";
 import ImageCard from "../../components/ImageCard";
+import DetailBox from "../../components/DetailBox";
 
 import {
   getReleaseYear,
   getCertification,
   getCasts,
   getCrews,
+  getGenreIds,
 } from "../../utils/movieDataHOC";
 import { PlayIcon } from "../../utils/svgs";
 
@@ -48,6 +50,7 @@ const MoviePage = () => {
           </div>
         </div>
       </Section>
+
       <Section className={styles.director_container}>
         <div className={styles.row}>
           <span className={styles.directed_by}>Directed by</span>
@@ -56,12 +59,14 @@ const MoviePage = () => {
           </span>
         </div>
       </Section>
+
       <Section className={styles.summary_container}>
         <div className={styles.row}>
           <p className={styles.tagline}>{movie.tagline}</p>
           <p className={styles.overview}>{movie.overview}</p>
         </div>
       </Section>
+
       <Section className={styles.actors_container}>
         <h2 className={styles.h2}>Actors</h2>
         <Scroller>
@@ -70,6 +75,7 @@ const MoviePage = () => {
           })}
         </Scroller>
       </Section>
+
       <Section className={styles.crew_container}>
         <h2 className={styles.h2}>Crews</h2>
         <Scroller>
@@ -78,6 +84,7 @@ const MoviePage = () => {
           })}
         </Scroller>
       </Section>
+
       <Section>
         <h2 className={styles.h2}>Watch Trailer</h2>
         <div onClick={() => setPlayer(true)} className={styles.player_wrapper}>
@@ -102,6 +109,78 @@ const MoviePage = () => {
               className={styles.player}
             ></iframe>
           )}
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className={styles.h2}>Genres</h2>
+        <div className={styles.box_wrapper}>
+          {movie.genres.map((genre) => {
+            return (
+              <DetailBox
+                className={styles.detail_box}
+                key={genre.id}
+                text={genre.name}
+              />
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className={styles.h2}>Runtime</h2>
+        <div className={styles.box_wrapper}>
+          {
+            <DetailBox
+              className={styles.detail_box}
+              text={`${movie.runtime} mins`}
+            />
+          }
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className={styles.h2}>Studios</h2>
+        <div className={styles.box_wrapper}>
+          {movie.production_companies.map((company) => {
+            return (
+              <DetailBox
+                key={company.id}
+                className={styles.detail_box}
+                text={company.name}
+              />
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className={styles.h2}>Countries</h2>
+        <div className={styles.box_wrapper}>
+          {movie.production_countries.map((country) => {
+            return (
+              <DetailBox
+                key={country.iso_3166_1}
+                className={styles.detail_box}
+                text={country.name}
+              />
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section>
+        <h2 className={styles.h2}>Languages</h2>
+        <div className={styles.box_wrapper}>
+          {movie.spoken_languages.map((language) => {
+            return (
+              <DetailBox
+                key={language.iso_639_1}
+                className={styles.detail_box}
+                text={language.english_name}
+              />
+            );
+          })}
         </div>
       </Section>
     </Layout>
