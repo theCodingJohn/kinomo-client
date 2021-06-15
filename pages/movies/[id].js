@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { movie, genres, popularMovies } from "../../utils/helpers";
+import { genres, popularMovies } from "../../utils/helpers";
 import { dateToWord } from "../../utils/dateToWord";
 
 import styles from "../../styles/movie.module.scss";
@@ -21,7 +21,7 @@ import {
 } from "../../utils/movieDataHOC";
 import { PlayIcon } from "../../utils/svgs";
 
-const MoviePage = () => {
+const MoviePage = ({ movie }) => {
   const [isPlayerClicked, setPlayer] = useState(false);
 
   return (
@@ -187,13 +187,13 @@ const MoviePage = () => {
   );
 };
 
-// export const getServerSideProps = async (context) => {
-//   const { id } = context.params;
-//   const movie = await movieService.getMovie(id);
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+  const movie = await movieService.getMovie(id);
 
-//   return {
-//     props: { movie },
-//   };
-// };
+  return {
+    props: { movie },
+  };
+};
 
 export default MoviePage;
