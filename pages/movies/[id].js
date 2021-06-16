@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { genres, popularMovies } from "../../utils/helpers";
 import { dateToWord } from "../../utils/dateToWord";
 
@@ -71,7 +71,11 @@ const MoviePage = ({ movie }) => {
         <h2 className={styles.h2}>Actors</h2>
         <Scroller>
           {getCasts(movie).map((cast) => {
-            return <ImageCard person={cast} className={styles.card} />;
+            return (
+              <Fragment key={cast.order}>
+                <ImageCard person={cast} className={styles.card} />
+              </Fragment>
+            );
           })}
         </Scroller>
       </Section>
@@ -80,7 +84,11 @@ const MoviePage = ({ movie }) => {
         <h2 className={styles.h2}>Crews</h2>
         <Scroller>
           {getCrews(movie).map((crew) => {
-            return <ImageCard person={crew} className={styles.card} />;
+            return (
+              <Fragment key={crew.credit_id}>
+                <ImageCard person={crew} className={styles.card} />
+              </Fragment>
+            );
           })}
         </Scroller>
       </Section>
@@ -117,11 +125,9 @@ const MoviePage = ({ movie }) => {
         <div className={styles.box_wrapper}>
           {movie.genres.map((genre) => {
             return (
-              <DetailBox
-                className={styles.detail_box}
-                key={genre.id}
-                text={genre.name}
-              />
+              <Fragment key={genre.id}>
+                <DetailBox className={styles.detail_box} text={genre.name} />
+              </Fragment>
             );
           })}
         </div>
@@ -144,11 +150,9 @@ const MoviePage = ({ movie }) => {
         <div className={styles.box_wrapper}>
           {movie.production_companies.map((company) => {
             return (
-              <DetailBox
-                key={company.id}
-                className={styles.detail_box}
-                text={company.name}
-              />
+              <Fragment key={company.id}>
+                <DetailBox className={styles.detail_box} text={company.name} />
+              </Fragment>
             );
           })}
         </div>
@@ -159,11 +163,9 @@ const MoviePage = ({ movie }) => {
         <div className={styles.box_wrapper}>
           {movie.production_countries.map((country) => {
             return (
-              <DetailBox
-                key={country.iso_3166_1}
-                className={styles.detail_box}
-                text={country.name}
-              />
+              <Fragment key={country.iso_3166_1}>
+                <DetailBox className={styles.detail_box} text={country.name} />
+              </Fragment>
             );
           })}
         </div>
@@ -174,11 +176,12 @@ const MoviePage = ({ movie }) => {
         <div className={styles.box_wrapper}>
           {movie.spoken_languages.map((language) => {
             return (
-              <DetailBox
-                key={language.iso_639_1}
-                className={styles.detail_box}
-                text={language.english_name}
-              />
+              <Fragment key={language.iso_639_1}>
+                <DetailBox
+                  className={styles.detail_box}
+                  text={language.english_name}
+                />
+              </Fragment>
             );
           })}
         </div>
@@ -190,9 +193,16 @@ const MoviePage = ({ movie }) => {
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
   const movie = await movieService.getMovie(id);
+  let notFound = false;
+
+  if (movie.success === false) {
+    // context.res.statusCode = 404;
+    notFound = true;
+  }
 
   return {
     props: { movie },
+    notFound,
   };
 };
 

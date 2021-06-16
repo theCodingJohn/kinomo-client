@@ -156,7 +156,7 @@ export const PlayIcon = () => (
     x="0px"
     y="0px"
     viewBox="0 0 397.2 397.2"
-    xmlspace="preserve"
+    xmlSpace="preserve"
   >
     <g>
       <g>

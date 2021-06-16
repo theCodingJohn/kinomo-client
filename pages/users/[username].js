@@ -16,11 +16,16 @@ const profile = ({ user }) => {
 export const getServerSideProps = async (context) => {
   const { username } = context.params;
   const user = await userService.getUser(username);
+  let notFound = false;
 
-  if (!user) context.res.statusCode = 404;
+  if (!user) {
+    context.res.statusCode = 404;
+    notFound = true;
+  }
 
   return {
     props: { user: user },
+    notFound,
   };
 };
 
