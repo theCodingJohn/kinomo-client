@@ -32,12 +32,19 @@ const profile = ({ user }) => {
           <div className={styles.avatar_wrapper}>
             <img src={avatar} alt="avatar" />
           </div>
-          <div className={styles.last_watched_wrapper}>
-            <div className={styles.last_watched_inner_wrapper}>
-              <span className={styles.subtitle}>Last watched:</span> <br />
-              <span className={styles.title}>{last_watched.title}</span>
+          {last_watched && (
+            <div className={styles.last_watched_wrapper}>
+              <div className={styles.last_watched_inner_wrapper}>
+                <span className={styles.subtitle}>Last watched:</span> <br />
+                <a
+                  href={`/movies/${last_watched.ids.tmdb}`}
+                  className={styles.title}
+                >
+                  {last_watched.title}
+                </a>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Section>
     </Layout>

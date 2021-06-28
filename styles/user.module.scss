@@ -103,6 +103,10 @@
         @include mediumScreen() {
           font-size: 18px;
         }
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
