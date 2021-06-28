@@ -6,10 +6,13 @@ import Section from "../../components/Section";
 import styles from "../../styles/user.module.scss";
 
 import default_banner from "../../public/images/default_banner.jpg";
+import default_avatar from "../../public/images/avatar.png";
 
 const profile = ({ user }) => {
   const backdrop_path =
     user.movies[user.movies.length - 1]?.movie.backdrop_path;
+  const avatar = user.avatar || default_avatar;
+  const last_watched = user.movies[user.movies.length - 1]?.movie;
   console.log(user);
 
   return (
@@ -25,7 +28,17 @@ const profile = ({ user }) => {
         }}
       >
         <div className={styles.overlay}></div>
-        <div className={styles.row}></div>
+        <div className={styles.row}>
+          <div className={styles.avatar_wrapper}>
+            <img src={avatar} alt="avatar" />
+          </div>
+          <div className={styles.last_watched_wrapper}>
+            <div className={styles.last_watched_inner_wrapper}>
+              <span className={styles.subtitle}>Last watched:</span> <br />
+              <span className={styles.title}>{last_watched.title}</span>
+            </div>
+          </div>
+        </div>
       </Section>
     </Layout>
   );
